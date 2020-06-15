@@ -1,0 +1,41 @@
+<section class="sign-cont">
+  <form
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10 px"
+    [formGroup]="loginForm"
+    (ngSubmit)="handleLogin()"
+  >
+    <mat-form-field>
+      <input
+        type="text"
+        matInput
+        placeholder="your email"
+        formControlName="email"
+        name="email"
+      />
+      <mat-error>email is required</mat-error>
+      <mat-error>invalid email</mat-error>
+    </mat-form-field>
+    <mat-form-field hintLabel="Should be atleast 6 characters.">
+      <input
+        type="password"
+        matInput
+        placeholder="your password"
+        formControlName="pass"
+        name="password"
+      />
+      <mat-error>password required</mat-error>
+    </mat-form-field>
+    <button
+      *ngIf="!isLoading"
+      type="submit"
+      mat-raised-button
+      color="primary"
+      [disabled]="loginForm.invalid"
+    >
+      Submit
+    </button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</section>
